@@ -1,0 +1,32 @@
+# Build outputs
+/build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json
+
+# Compiled binaries
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.exe
+*.out
+
+# Debugger / profiler artifacts
+*.core
+core
+core.*
+
+# IDE and editor state
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Local configuration
+.env
+.env.*
+!.env.example
