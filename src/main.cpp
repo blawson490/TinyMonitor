@@ -39,11 +39,11 @@ int main() {
     int uptimeHours = uptime_in_hours();
 
     std::string onlineString = online ? "true" : "false";
-    std::string upTimeHoursString = (uptimeHours != -1) ? std::to_string(uptimeHours) : "Unavailable";
+    std::string upTimeHoursString = (uptimeHours != -1) ? std::to_string(uptimeHours) + "h": "Unavailable";
 
-    std::cout << "TinyMonitor v0.1™ \n";
+    std::cout << "TinyMonitor v0.2™ \n";
     std::cout << "Hostname: " << hostname << "\n";
     std::cout << "Online: " << onlineString << "\n";
-    std::cout << "Uptime: " << upTimeHoursString << "h\n";
+    std::cout << "Uptime: " << upTimeHoursString << "\n";
     return 0;
 }
