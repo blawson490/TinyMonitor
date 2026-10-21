@@ -120,10 +120,6 @@ int main() {
         // if only total is valid
         memoryString = std::to_string(memory.total_mib) + " MiB of total memory, Used memory unavailable.";
     }
-    else if (memory.usedMemoryValid && !memory.totalMemoryValid){
-        // if only used is valid
-        memoryString = std::to_string(memory.used_mib) + " MiB currently used. Total memory unavailable.";
-    }
     else {
         // neither are valid
         memoryString = "Unable to get Used, Available, or Total memory usage.";
