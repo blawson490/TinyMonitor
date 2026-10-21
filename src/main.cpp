@@ -1,25 +1,23 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
 #include <unistd.h>
 
 std::string get_hostname() {
     char hostname[256];
-    if (gethostname(hostname, sizeof(hostname)) == 0) {
-        return hostname;
-    };
-
-    return "Error: Unable to retrieve hostname.";
+    if (gethostname(hostname, sizeof(hostname)) != 0) {
+        return "Unable to resolve host name";
+    }
+    hostname[sizeof(hostname) - 1] = '\0';
+    return std::string(hostname);
 }
 
 int uptime_in_hours() {
     std::ifstream uptimeFile("/proc/uptime");
 
     if (!uptimeFile.is_open()) {
-        std::cerr << "Error: Could not open /proc/uptime" << std::endl;
         return -1;
-    };
+    }
 
     double uptimeSeconds = 0.0;
     int uptimeHours = 0;
@@ -28,20 +26,21 @@ int uptime_in_hours() {
         int uptimeMinutes = uptimeSeconds / 60;
         uptimeHours = uptimeMinutes / 60;
     } else {
-        std::cerr << "Error: Failed to parse /proc/uptime" << std::endl;
+
         return -1;
-    };
+    }
 
     return uptimeHours;
 }
 
 int main() {
+    std::string hostname = get_hostname();
     bool online = true;
-    int uptime = 24;
+    int uptimeHours = uptime_in_hours();
 
     std::cout << "TinyMonitor v0.1™ \n";
-    std::cout << "Hostname: " << get_hostname() << "\n";
+    std::cout << "Hostname: " << hostname << "\n";
     std::cout << "Online: " << (online ? "true" : "false") << "\n";
-    std::cout << "Uptime: " << uptime_in_hours() << "h\n";
+    std::cout << "Uptime: " << uptimeHours << "h\n";
     return 0;
 }
