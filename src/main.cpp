@@ -5,8 +5,9 @@ int main() {
     bool online = true;
     int uptime = 24;
 
+    std::cout << "TinyMonitor v0.1™ \n";
     std::cout << "Hostname: " << hostname << "\n";
-    std::cout << "Online: " << online << "\n";
-    std::cout << "Uptime: " << uptime << "\n";
+    std::cout << "Online: " << (online ? "true" : "false") << "\n";
+    std::cout << "Uptime: " << uptime << "h\n";
     return 0;
 }
