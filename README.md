@@ -5,9 +5,15 @@ A C++20 application built with CMake and Ninja.
 TinyMonitor is a lightweight C++ system monitoring project.
 
 # Release Notes
+### v0.4:
+ - Added memory stats for Linux from /proc/meminfo
+ - Computes used memory from memory total - memory available
+ - Displays used memory and total memory in MiB 
+ - Shows available metrics and displays message for unavailable metrics
+
 ### v0.3:
  - Includes automated versioning via cmake templating
- - Centeralized automated version in CMakeLists.txt
+ - Centralized automated version in CMakeLists.txt
  - Added automatic generation of version.h using CMake
  - Updated the application to display its version from the generated header file
 #### v0.3.1:
