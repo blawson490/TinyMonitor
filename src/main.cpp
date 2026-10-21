@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <unistd.h>
+#include "version.h"
 
 std::string get_hostname() {
     char hostname[256];
@@ -41,7 +42,7 @@ int main() {
     std::string onlineString = online ? "true" : "false";
     std::string upTimeHoursString = (uptimeHours != -1) ? std::to_string(uptimeHours) + "h": "Unavailable";
 
-    std::cout << "TinyMonitor v0.2™ \n";
+    std::cout << "TinyMonitor™ v"<< PRODUCT_VERSION << "\n";
     std::cout << "Hostname: " << hostname << "\n";
     std::cout << "Online: " << onlineString << "\n";
     std::cout << "Uptime: " << upTimeHoursString << "\n";

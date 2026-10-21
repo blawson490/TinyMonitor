@@ -5,6 +5,9 @@ A C++20 application built with CMake and Ninja.
 TinyMonitor is a lightweight C++ system monitoring project.
 
 # Release Notes
+v0.3:
+Includes automated versioning via cmake templating
+
 v0.2:
 Includes hostname and uptime in hours
 ** Online still hardcoded **
