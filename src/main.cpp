@@ -38,9 +38,12 @@ int main() {
     bool online = true;
     int uptimeHours = uptime_in_hours();
 
+    std::string onlineString = online ? "true" : "false";
+    std::string upTimeHoursString = (uptimeHours != -1) ? std::to_string(uptimeHours) : "Unavailable";
+
     std::cout << "TinyMonitor v0.1™ \n";
     std::cout << "Hostname: " << hostname << "\n";
-    std::cout << "Online: " << (online ? "true" : "false") << "\n";
-    std::cout << "Uptime: " << uptimeHours << "h\n";
+    std::cout << "Online: " << onlineString << "\n";
+    std::cout << "Uptime: " << upTimeHoursString << "h\n";
     return 0;
 }
