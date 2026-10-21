@@ -11,13 +11,13 @@ TinyMonitor is a lightweight C++ system monitoring project.
  - Displays used memory and total memory in MiB 
  - Shows available metrics and displays message for unavailable metrics
 
+#### v0.3.1:
+ - Updated the Release notes for v0.3
 ### v0.3:
  - Includes automated versioning via cmake templating
  - Centralized automated version in CMakeLists.txt
  - Added automatic generation of version.h using CMake
  - Updated the application to display its version from the generated header file
-#### v0.3.1:
- - Updated the Release notes for v0.3
 
 ### v0.2:
  - Includes hostname and uptime in hours
