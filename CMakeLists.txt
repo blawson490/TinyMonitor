@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.21)
 
 project(TinyMonitor
-    VERSION 0.4.1
+    VERSION 0.5.0
     LANGUAGES CXX
 )
+
+include(CTest)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -18,6 +20,7 @@ configure_file(
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/memory.cpp
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -25,3 +28,7 @@ target_include_directories(${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_CURRENT_BINARY_DIR}/generated
 )
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()

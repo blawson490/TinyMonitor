@@ -40,6 +40,31 @@
         "name": "release",
         "configurePreset": "release"
       }
+    ],
+    "testPresets": [
+        {
+        "name": "test-base",
+        "hidden": true,
+        "output": {
+          "outputOnFailure": true
+        },
+        "execution": {
+          "jobs": 4,
+          "noTestsAction": "error"
+        }
+      },
+        {
+        "name": "debug",
+        "displayName": "Run Debug Tests",
+        "inherits": "test-base",
+        "configurePreset": "debug"
+      },
+      {
+        "name": "release",
+        "displayName": "Run Release Tests",
+        "inherits": "test-base",
+        "configurePreset": "release"
+      }
     ]
-  }
+}
   
