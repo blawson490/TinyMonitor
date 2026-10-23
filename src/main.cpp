@@ -5,6 +5,7 @@
 #include "version.h"
 #include "memory.h"
 #include "utils.h"
+#include <format>
 using namespace std;
 
 
@@ -54,16 +55,107 @@ void print_stats(string hostname, string uptime, string memory, string online) {
     cout << "Memory: " << memory << endl;
 }
 
+// Function to set the console text color using ANSI escape
+// codes
+void SetColor(int textColor)
+{
+    cout << "\033[" << textColor << "m";
+}
+
+void ResetText() { cout << "\033[0m"; }
+
+void SetBold() { cout << "\033[1m";}
+
+void DrawVerticalBorder() {
+    cout << "│";
+}
+
+void DrawBottomBorder() {
+    cout << "╰─────────────────────────────╯";
+}
+
+void DrawEmpty() {
+    cout << "░";
+}
+
+void DrawFilled() {
+    cout << "█";
+}
+
+void DrawProgress(int percentage, int length) {
+    int total = 100;
+    int progress = percentage;
+    int totalLength = progress < 100 ? length : length - 1;
+    int filledLength = (progress * totalLength) / 100;
+    int emptyLength = totalLength - filledLength;
+    SetColor(32);
+    for (int i = 0; i <= filledLength; i++) {
+        DrawFilled();
+    }
+    ResetText();
+    for (int i = 0; i <= emptyLength; i++) {
+        DrawEmpty();
+    }
+
+    cout << " " << percentage << "%";
+}
+
+void print(){
+    SetColor(36);
+    SetBold();
+    cout << "╭──── " << "TinyMonitor™ v"<< PRODUCT_VERSION << " ────╮" << endl;
+    ResetText();
+    SetColor(36);
+    // DrawVerticalBorder();
+    // cout << format("{:<28} {}", "", "");
+    // DrawVerticalBorder();
+    // cout << endl;
+    DrawVerticalBorder();
+    ResetText();
+    cout << format("{:<17} {}", "Hostname:", "LawsonSever");
+    SetColor(36);
+    DrawVerticalBorder();
+    cout << endl;
+    SetColor(36);
+    DrawVerticalBorder();
+    ResetText();
+    cout << format("{:<20} {}", "Status:", "● Online");
+    SetColor(36);
+    DrawVerticalBorder();
+    cout << endl;
+    DrawVerticalBorder();
+    ResetText();
+    cout << format("{:<24} {}", "Uptime:", "127h");
+    SetColor(36);
+    DrawVerticalBorder();
+    cout << endl;
+    DrawVerticalBorder();
+    ResetText();
+    cout << format("{:<11} {}", "Memory:","14.64 / 62.48 GiB");
+    SetColor(36);
+    DrawVerticalBorder();
+    cout << endl;
+    DrawVerticalBorder();
+    ResetText();
+    DrawProgress(23, 23);
+    SetColor(36);
+    DrawVerticalBorder();
+    cout << endl;
+    DrawBottomBorder();
+    cout << endl;
+}
+
 int main() {
-    string hostname = get_hostname();
-    string uptime = get_uptime();
-    string memory = get_memory_as_string();
+    // string hostname = get_hostname();
+    // string uptime = get_uptime();
+    // string memory = get_memory_as_string();
 
-    bool online = true;
-    string online_string = online ? "true" : "false";
+    // bool online = true;
+    // string online_string = online ? "true" : "false";
 
-    cout << "TinyMonitor™ v"<< PRODUCT_VERSION << "\n";
-    print_stats(hostname, uptime, memory, online_string);
+    // cout << "TinyMonitor™ v"<< PRODUCT_VERSION << "\n";
+    // print_stats(hostname, uptime, memory, online_string);
     
+    print();
     return 0;
 }
